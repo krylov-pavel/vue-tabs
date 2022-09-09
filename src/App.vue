@@ -1,30 +1,44 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <v-app>
+    <v-main>
+      <router-view/>
+      <v-card>
+        <v-tabs
+            v-model="tab"
+            background-color="primary"
+        >
+          <v-tab value="one">Item One</v-tab>
+          <v-tab value="two">Item Two</v-tab>
+          <v-tab value="three">Item Three</v-tab>
+        </v-tabs>
+
+        <v-card-text>
+          <v-window v-model="tab">
+            <v-window-item value="one">
+              One
+            </v-window-item>
+
+            <v-window-item value="two">
+              Two
+            </v-window-item>
+
+            <v-window-item value="three">
+              Three
+            </v-window-item>
+          </v-window>
+        </v-card-text>
+      </v-card>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+
+export default {
+  name: 'App',
+
+  data: () => ({
+    tab: null
+  }),
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+</script>
